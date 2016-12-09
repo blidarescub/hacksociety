@@ -29,7 +29,7 @@ class EntrySerializer(serializers.HyperlinkedModelSerializer):
 
 # ViewSets define the view behavior.
 class EntryViewSet(viewsets.ModelViewSet):
-    queryset = Entry.objects.filter(id__lte=100)
+    queryset = Entry.objects.all()
     serializer_class = EntrySerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
