@@ -24,12 +24,12 @@ from rest_framework import routers, serializers, viewsets
 class EntrySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Entry
-        fields = '__all__'
+        fields = ('cod_unic_candidat', 'sex', 'media')
 
 
 # ViewSets define the view behavior.
 class EntryViewSet(viewsets.ModelViewSet):
-    queryset = Entry.objects.all().values()
+    queryset = Entry.objects.all()
     serializer_class = EntrySerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
