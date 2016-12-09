@@ -59,6 +59,9 @@ class Entry(models.Model):
     medie = models.CharField(max_length=1024, blank=True, null=True)
     anul = models.CharField(max_length=1024, blank=True, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Entries'
+
     def __unicode__(self):
         if not self.cod_unic_candidat:
             return unicode(self.id)
