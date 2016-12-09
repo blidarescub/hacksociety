@@ -24,7 +24,8 @@ from rest_framework import routers, serializers, viewsets
 class EntrySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Entry
-        fields = ('cod_unic_candidat', 'sex', 'medie')
+        # fields = ('cod_unic_candidat', 'sex', 'medie')
+        fields = '__all__'
 
 
 # ViewSets define the view behavior.
