@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
+    'djoser',
     'gov_api'
-    'djoser'
 ]
 
 MIDDLEWARE_CLASSES = [
