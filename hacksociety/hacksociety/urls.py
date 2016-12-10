@@ -51,7 +51,7 @@ class EntrySerializer(serializers.HyperlinkedModelSerializer):
 
 # ViewSets define the view behavior.
 class EntryViewSet(viewsets.ModelViewSet):
-    queryset = Entry.objects.all()
+    queryset = Entry.objects.all().order_by('id')
     serializer_class = EntrySerializer
 
 
