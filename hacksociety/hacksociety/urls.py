@@ -56,6 +56,8 @@ class EntryViewSet(viewsets.ModelViewSet):
 
 class EntryBulkViewSet(BulkModelViewSet):
     model = Entry
+    queryset = Entry.objects.all()
+    serializer_class = BulkEntrySerializer
 
 
 # Routers provide an easy way of automatically determining the URL conf.
