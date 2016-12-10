@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+import arrow
 
 
 class Entry(models.Model):
@@ -57,7 +58,7 @@ class Entry(models.Model):
     punctaj_digitale = models.CharField(max_length=1024, blank=True, null=True)
     status = models.CharField(max_length=1024, blank=True, null=True)
     medie = models.CharField(max_length=1024, blank=True, null=True)
-    anul = models.CharField(max_length=1024, blank=True, null=True)
+    anul = models.CharField(max_length=1024, blank=True, null=True, default=str(arrow.now().year))
 
     class Meta:
         verbose_name_plural = 'Entries'
