@@ -18,6 +18,26 @@ from django.contrib import admin
 
 from gov_api.models import Entry
 from rest_framework import routers, serializers, viewsets
+from rest_framework.serializers import ModelSerializer
+from rest_framework_bulk.routes import BulkRouter
+from rest_framework_bulk.generics import BulkModelViewSet
+from rest_framework_bulk import (
+    BulkListSerializer,
+    BulkSerializerMixin,
+    ListBulkCreateUpdateDestroyAPIView,
+)
+
+
+class BulkEntrySerializer(BulkSerializerMixin, ModelSerializer):
+    class Meta(object):
+        model = Entry
+        # only necessary in DRF3
+        list_serializer_class = BulkListSerializer
+
+
+class BulkEntryView(ListBulkCreateUpdateDestroyAPIView):
+    queryset = Entry.objects.all()
+    serializer_class = BulkEntrySerializer
 
 
 # Serializers define the API representation.
@@ -33,9 +53,17 @@ class EntryViewSet(viewsets.ModelViewSet):
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
 
+
+class EntryBulkViewSet(BulkModelViewSet):
+    model = Entry
+
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'entries', EntryViewSet)
+
+router_bulk = BulkRouter()
+router_bulk.register(r'entries_bulk', EntryBulkViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
