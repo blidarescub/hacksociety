@@ -33,7 +33,7 @@ class BulkEntrySerializer(BulkSerializerMixin, ModelSerializer):
         model = Entry
         # only necessary in DRF3
         list_serializer_class = BulkListSerializer
-        fields = ('id')
+        fields = ('id',)
 
 
 class BulkEntryView(ListBulkCreateUpdateDestroyAPIView):
