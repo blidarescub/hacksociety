@@ -63,7 +63,7 @@ router = routers.DefaultRouter()
 router.register(r'entries', EntryViewSet)
 
 router_bulk = BulkRouter()
-router_bulk.register(r'entries_bulk', EntryBulkViewSet)
+router_bulk.register(r'entries_bulk', EntryBulkViewSet, base_name='bulk')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -73,5 +73,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^auth/', include('djoser.urls.authtoken')),
     url(r'^', include(router.urls)),
-    url(r'^bulk/', include(router_bulk.urls))
+    url(r'^', include(router_bulk.urls))
 ]
