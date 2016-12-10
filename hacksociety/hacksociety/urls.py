@@ -73,5 +73,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^auth/', include('djoser.urls.authtoken')),
     url(r'^', include(router.urls)),
-    url(r'^', include(router_bulk.urls))
+    url(r'^bulk/', include(router_bulk.urls))
 ]
